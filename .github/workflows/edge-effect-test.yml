@@ -45,6 +45,13 @@ jobs:
           DEVICE_NAME: ${{ inputs.device || 'iPhone 18 Pro Max' }}
         run: scripts/run.sh
 
+      - name: Measure where the effect ends
+        continue-on-error: true
+        run: |
+          python3 -m venv .venv
+          .venv/bin/pip install --quiet pillow numpy
+          .venv/bin/python scripts/measure.py out/*.png | tee out/measurements.txt
+
       - name: Upload screenshots
         if: always()
         uses: actions/upload-artifact@v4
