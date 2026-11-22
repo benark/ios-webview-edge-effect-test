@@ -27,7 +27,7 @@ jobs:
     runs-on: xcode-27
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Select Xcode
         run: |
@@ -54,7 +54,7 @@ jobs:
 
       - name: Upload screenshots
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: screenshots
           path: out/
@@ -63,17 +63,4 @@ jobs:
       # A branch is easier to browse than an artifact zip: each run gets a run-N folder on "results".
       - name: Publish to the results branch
         if: always()
-        run: |
-          if [ -z "$(ls -A out 2>/dev/null)" ]; then echo "nothing to publish"; exit 0; fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git fetch --depth 1 origin results; then
-            git worktree add -B results ../results FETCH_HEAD
-          else
-            git worktree add --orphan -b results ../results
-          fi
-          mkdir -p "../results/run-${GITHUB_RUN_NUMBER}"
-          cp out/* "../results/run-${GITHUB_RUN_NUMBER}/"
-          git -C ../results add -A
-          git -C ../results commit -m "Results for run ${GITHUB_RUN_NUMBER} (${GITHUB_SHA::7})"
-          git -C ../results push origin results
+        run: scripts/publish-results.sh
