@@ -7,10 +7,25 @@ Testing an issue in the iOS WebView edge effect, with reproductions of said issu
 On iOS 27, a web app opened from the Home Screen with `apple-mobile-web-app-status-bar-style` set to
 `black-translucent` and `viewport-fit=cover` gets the system's top scroll edge effect (a progressive blur and fade)
 from the top of the screen to about 35 pt below the status bar. That band covers `position: fixed` toolbars placed
-just under the status bar, and the page has no way to prevent it. It is tracked as
-[WebKit bug 324438](https://bugs.webkit.org/show_bug.cgi?id=324438) and filed with Apple as Feedback FB25685235.
+just under the status bar, and the page has no way to prevent it.
 
 The full write-up, with measurements, analysis and suggested fixes, is in **[docs/report.md](docs/report.md)**.
+
+## Where it is filed
+
+Filed on November 22, 2026. Each place links to the others: the Feedback and the WebKit comments point to this
+repository, and this table points back to them.
+
+| Where | Reference | What is there |
+|---|---|---|
+| Apple Feedback Assistant | FB25685235 | The report in Apple's format, with the four device screenshots. Only Apple and the filer can open it. |
+| WebKit Bugzilla, the tracking bug | [Bug 324438](https://bugs.webkit.org/show_bug.cgi?id=324438), "REGRESSION (iOS 27): PWA blurry in header/status bar" (rdar://187727574) | [Comment 6](https://bugs.webkit.org/show_bug.cgi?id=324438#c6): the reproduction pages, the measurements and the soft-style finding |
+| The same bug, attachments | Comments [3](https://bugs.webkit.org/show_bug.cgi?id=324438#c3), [4](https://bugs.webkit.org/show_bug.cgi?id=324438#c4) and [5](https://bugs.webkit.org/show_bug.cgi?id=324438#c5) | [`fade-bug.png`](https://bugs.webkit.org/attachment.cgi?id=482494), [`fade-ctrl.png`](https://bugs.webkit.org/attachment.cgi?id=482495) and [`comparison-top.png`](https://bugs.webkit.org/attachment.cgi?id=482496), the same files as in [`docs/`](docs) |
+| WebKit Bugzilla, a report of the same configuration | [Bug 332418](https://bugs.webkit.org/show_bug.cgi?id=332418) | [Comment 1](https://bugs.webkit.org/show_bug.cgi?id=332418#c1): a pointer to the comments above |
+
+Other WebKit reports of the same blur: [329103](https://bugs.webkit.org/show_bug.cgi?id=329103), [330085](https://bugs.webkit.org/show_bug.cgi?id=330085), [328949](https://bugs.webkit.org/show_bug.cgi?id=328949), and
+[328168](https://bugs.webkit.org/show_bug.cgi?id=328168), which was closed as a duplicate of 324438. The report lists what each one says under
+[Related reports](docs/report.md#related-reports).
 
 ## What is here
 

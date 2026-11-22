@@ -3,9 +3,12 @@
 A report for Apple (Feedback Assistant) and WebKit (bugs.webkit.org), with a live reproduction.
 
 - Filed with Apple as Feedback **FB25685235** on November 22, 2026.
-- On bugs.webkit.org this behavior is tracked as [bug 324438](https://bugs.webkit.org/show_bug.cgi?id=324438) (see
-  [Related reports](#related-reports)). A new bug there would most likely be closed as a duplicate, as bug 328168 was,
-  so this reproduction belongs there as a comment.
+- On bugs.webkit.org this behavior is tracked as [bug 324438](https://bugs.webkit.org/show_bug.cgi?id=324438) (see [Related reports](#related-reports)).
+  This reproduction was added there the same day as [comment 6](https://bugs.webkit.org/show_bug.cgi?id=324438#c6), with screenshots attached in comments
+  3 to 5. A new bug would most likely have been closed as a duplicate, as bug 328168 was.
+- [Bug 332418](https://bugs.webkit.org/show_bug.cgi?id=332418), a report of the same configuration, has a pointer to those comments in its
+  [comment 1](https://bugs.webkit.org/show_bug.cgi?id=332418#c1).
+- The [README](../README.md#where-it-is-filed) has a table of all of these.
 
 ## Summary
 
