@@ -30,9 +30,10 @@ case:
 
 ## Results
 
-Run 1: iPhone 18 Pro Max simulator, iOS 27.2, Xcode 27.2. The web view reports `safe-area-inset-top: 62pt` and a
-440 × 956 window, the same as the Home Screen web app on a real iPhone 18 Pro Max. Screenshots and reports are in
-[`run-1` on the `results` branch](../../tree/results/run-1).
+Runs 1 and 2: iPhone 18 Pro Max simulator, iOS 27.2, Xcode 27.2. The web view reports `safe-area-inset-top: 62pt` and
+a 440 × 956 window, the same as the Home Screen web app on a real iPhone 18 Pro Max. Both runs give the same numbers,
+and their screenshots are identical pixel for pixel below the status bar clock. Screenshots, reports and
+`measurements.txt` are in the [`run-N` folders on the `results` branch](../../tree/results).
 
 | Top edge effect | Ruler shows from | Ruler sharp from | Fixed toolbar (starts at 62 pt) |
 |---|---|---|---|
