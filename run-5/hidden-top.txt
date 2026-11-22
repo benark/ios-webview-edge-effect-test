@@ -1,0 +1,10 @@
+iOS: 27.2
+page: {"info":"status bar style: black-translucent\ntoolbar: transparent over the status bar\ndisplay-mode: browser · navigator.standalone: false\nsafe-area-inset-top: 62pt (0pt when the page first ran) · devicePixelRatio: 3\nwindow: 440×956 · screen: 440×956\nMozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148","scrollY":0}
+scrollView adjustedContentInset: {0, 0, 0, 0}
+scrollView contentOffset: {0, 0}
+style requested: hidden
+topEdgeEffect: <WKUIScrollEdgeEffect: 0x1043c89a0 wrapping <UIScrollEdgeEffect: 0x1043c8300> (Top)>
+topEdgeEffect.isHidden: true
+url: http://localhost:8765/translucent/
+view bounds: {{0, 0}, {440, 956}}
+webView safeAreaInsets: {62, 0, 34, 0}
