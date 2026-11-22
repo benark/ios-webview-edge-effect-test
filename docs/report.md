@@ -2,9 +2,10 @@
 
 A report for Apple (Feedback Assistant) and WebKit (bugs.webkit.org), with a live reproduction.
 
-On bugs.webkit.org this behavior is already tracked as [bug 324438](https://bugs.webkit.org/show_bug.cgi?id=324438)
-(see [Related reports](#related-reports)). A new bug there would most likely be closed as a duplicate, as bug 328168
-was, so add this reproduction as a comment on 324438 instead. File it in Feedback Assistant separately.
+- Filed with Apple as Feedback **FB25685235** on November 22, 2026.
+- On bugs.webkit.org this behavior is tracked as [bug 324438](https://bugs.webkit.org/show_bug.cgi?id=324438) (see
+  [Related reports](#related-reports)). A new bug there would most likely be closed as a duplicate, as bug 328168 was,
+  so this reproduction belongs there as a comment.
 
 ## Summary
 

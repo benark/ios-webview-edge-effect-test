@@ -8,7 +8,7 @@ On iOS 27, a web app opened from the Home Screen with `apple-mobile-web-app-stat
 `black-translucent` and `viewport-fit=cover` gets the system's top scroll edge effect (a progressive blur and fade)
 from the top of the screen to about 35 pt below the status bar. That band covers `position: fixed` toolbars placed
 just under the status bar, and the page has no way to prevent it. It is tracked as
-[WebKit bug 324438](https://bugs.webkit.org/show_bug.cgi?id=324438).
+[WebKit bug 324438](https://bugs.webkit.org/show_bug.cgi?id=324438) and filed with Apple as Feedback FB25685235.
 
 The full write-up, with measurements, analysis and suggested fixes, is in **[docs/report.md](docs/report.md)**.
 
