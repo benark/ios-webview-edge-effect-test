@@ -1,0 +1,8 @@
+automatic-scrolled.png     shows from  42 pt, sharp from  60 pt | % contrast at 39..99 pt:   5  13  24  38  52  65  73 100 100 100 100 100 100 100 100 100 100 100 100 100 100
+automatic-top.png          shows from  42 pt, sharp from  60 pt | % contrast at 39..99 pt:   5  13  23  38  52  65  73 100 100 100 100 100 100 100 100 100 100 100 100 100 100
+hard-scrolled.png          shows from  60 pt, sharp from  63 pt | % contrast at 39..99 pt:   0   0   0   0   0   0   0  88 100 100 100 100 100 100 100 100 100 100 100 100 100
+hard-solid-top.png         shows from  60 pt, sharp from  63 pt | % contrast at 39..99 pt:   0   0   0   0   0   0   0  91 100 100 100 100 100 100 100 100 100 100 100 100 100
+hard-top.png               shows from  60 pt, sharp from  63 pt | % contrast at 39..99 pt:   0   0   0   0   0   0   0  91 100 100 100 100 100 100 100 100 100 100 100 100 100
+hidden-top.png             shows from   0 pt, sharp from   0 pt | % contrast at 39..99 pt: 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100
+soft-scrolled.png          shows from  72 pt, sharp from  96 pt | % contrast at 39..99 pt:   1   0   0   1   1   1   2   1   2   3   4  10  15  29  33  44  52  62  81 100 100
+soft-top.png               shows from  72 pt, sharp from  96 pt | % contrast at 39..99 pt:   1   0   1   1   1   2   2   1   2   3   4  10  15  29  33  44  52  62  81 100 100
