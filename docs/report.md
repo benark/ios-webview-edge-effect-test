@@ -193,7 +193,7 @@ safe area inset.
 - [329103](https://bugs.webkit.org/show_bug.cgi?id=329103) (rdar://191690858),
   [330085](https://bugs.webkit.org/show_bug.cgi?id=330085) (rdar://192449901) and
   [328949](https://bugs.webkit.org/show_bug.cgi?id=328949) (rdar://191600024): the same blur, all NEW. 329103 says an
-  opaque fixed bar at the top edge removes it; with `black-translucent` on iOS 27.2 it does not ("Fade Solid").
+  opaque fixed bar at the top edge removes it; with `black-translucent` on iOS 27.2.1 it does not ("Fade Solid").
 - [332418](https://bugs.webkit.org/show_bug.cgi?id=332418): the same configuration and the same source analysis as
   above. It says an opaque fixed strip did not remove the blur, which matches "Fade Solid".
 - [317153](https://bugs.webkit.org/show_bug.cgi?id=317153), comment 2 (Luming Yin): "The black-translucent status bar
@@ -214,8 +214,9 @@ behavior from Apple.
 
 ## Environment
 
-- iPhone 18 Pro Max, 440 × 956 pt, `devicePixelRatio` 3.
-- iOS 27.2, from `Version/27.2` in the user agent. Confirm the exact version and build in Settings → General → About.
+- iPhone 18 Pro Max (model MJW44LL/A), 440 × 956 pt, `devicePixelRatio` 3.
+- iOS 27.2.1 (24B156). The user agent reports `Version/27.2`.
+- The simulator test under Analysis ran on the iOS 27.2 simulator runtime.
 - All three apps: `display-mode: standalone`, `navigator.standalone: true`, screen 440 × 956.
 - `Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2
   Mobile/15E148 Safari/604.1`

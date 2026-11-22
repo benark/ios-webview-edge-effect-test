@@ -18,7 +18,7 @@ The full write-up, with measurements, analysis and suggested fixes, is in **[doc
 |---|---|
 | [`docs/report.md`](docs/report.md) | The report for Apple (Feedback Assistant) and WebKit |
 | [`repro/`](repro) | The three reproduction pages (static HTML, one stylesheet, one script), published with GitHub Pages |
-| [`docs/device/`](docs/device) | Screenshots from a real iPhone 18 Pro Max on iOS 27.2 |
+| [`docs/device/`](docs/device) | Screenshots from a real iPhone 18 Pro Max on iOS 27.2.1 (24B156) |
 | [`App/`](App) | A test app that applies each edge effect style to a web view |
 | [`scripts/`](scripts) | Build and run the test app; measure and compare screenshots |
 | [`results` branch](../../tree/results) | Simulator screenshots and reports from each test run |
