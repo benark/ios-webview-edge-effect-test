@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Fade Solid">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="../repro.css">
+  <title>Status bar fade repro: black-translucent, opaque toolbar</title>
+</head>
+<body>
+  <!-- Ruler measured from the top of the screen (pt). -->
+  <div class="ruler" aria-hidden="true">
+    <span style="top:20px">20</span><span style="top:40px">40</span><span style="top:60px">60</span><span style="top:80px">80</span>
+    <span style="top:100px">100</span><span style="top:120px">120</span><span style="top:140px">140</span><span style="top:160px">160</span>
+    <span style="top:180px">180</span><span style="top:200px">200</span>
+  </div>
+
+  <!-- position: fixed toolbar with a plain, opaque background-color from the top of the screen (it covers the
+       status bar area too). This is the shape WebKit looks for when it decides to hide its top scroll edge effect. -->
+  <header class="toolbar solid">
+    <div class="toolbar-row">
+      <div class="avatar" title="fixed: concentric rings"></div>
+      <div class="label">FIXED TOOLBAR · Sharp text 0123456789 ABCDEFGHIJ</div>
+      <div class="btn">+</div><div class="btn">&#9711;</div>
+    </div>
+    <div class="checker" title="fixed: checkerboard"></div>
+  </header>
+
+  <main>
+    <div class="block">
+      <h2>Top of the page content (not fixed)</h2>
+      <div class="checker"></div>
+      <div class="lines"></div>
+      <p>Small text should be crisp: The quick brown fox jumps over the lazy dog 0123456789.</p>
+    </div>
+
+    <div class="mode" id="mode">…</div>
+
+    <div class="how">
+      <strong>This page uses black-translucent with an opaque toolbar: does the blur remain?</strong>
+      <p>The fixed toolbar here has a plain white <code>background-color</code> from the very top of the screen, so
+        nothing scrolls under the status bar. If the toolbar is still soft, a page has no way to keep a fixed
+        header sharp in this mode.</p>
+      <ol>
+        <li>In Safari, Share → Add to Home Screen, then open it from the Home Screen.</li>
+        <li>Also add <a href="../translucent/">the black-translucent (bug) version</a> and <a href="../default/">the default (control) version</a>, and compare them side by side.</li>
+        <li>Look at the top of the fixed toolbar against the ruler: with <code>black-translucent</code>, iOS draws a
+          progressive blur and fade from the top of the screen to about 35 pt below the status bar, so the upper part
+          of the toolbar is soft. With <code>default</code>, everything is sharp. In Safari itself (not installed), the
+          fixed toolbar stays sharp in both.</li>
+        <li>Scroll: content passing under the status bar is blurred too (expected), but the fixed toolbar stays blurred
+          even when nothing is scrolled.</li>
+      </ol>
+    </div>
+
+    <div class="block"><h2>More content</h2><div class="checker"></div><div class="lines"></div><p>Scroll this under the status bar.</p></div>
+    <div class="block"><h2>More content</h2><div class="checker"></div><div class="lines"></div><p>Scroll this under the status bar.</p></div>
+    <div class="block"><h2>More content</h2><div class="checker"></div><div class="lines"></div><p>Scroll this under the status bar.</p></div>
+  </main>
+
+  <script src="../repro.js"></script>
+</body>
+</html>

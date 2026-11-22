@@ -1,0 +1,45 @@
+/* Repro: iOS Home Screen web app + apple-mobile-web-app-status-bar-style=black-translucent → a top-to-bottom
+   progressive blur covers page content (including position: fixed toolbars) below the status bar.
+   Everything here is high-frequency on purpose (1 px lines, checkerboards, small text) so the blur is obvious. */
+:root { color-scheme: light; --safe-top: env(safe-area-inset-top, 0px); }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #ffffff; color: #000; font: 15px/1.35 -apple-system, system-ui, sans-serif; }
+body { min-height: 300vh; }
+
+/* Checkerboard (1 px squares at device resolution are too fine to photograph; use 2 CSS px). */
+.checker { background-image: repeating-conic-gradient(#000 0 25%, #fff 0 50%); background-size: 4px 4px; }
+.lines { background-image: repeating-linear-gradient(90deg, #000 0 1px, transparent 1px 3px); }
+
+/* Ruler on the left edge: one tick per 2 pt, labels every 20 pt, measured from the top of the screen. */
+.ruler { position: fixed; left: 0; top: 0; width: 44px; height: 220px; z-index: 50; pointer-events: none;
+  background-image: repeating-linear-gradient(to bottom, #e0002a 0 1px, transparent 1px 2px); background-size: 8px 100%; background-repeat: no-repeat; }
+.ruler span { position: absolute; left: 10px; font: 700 9px/1 ui-monospace, Menlo, monospace; color: #e0002a; transform: translateY(-50%); }
+.ruler span::before { content: ""; position: absolute; left: -10px; top: 50%; width: 9px; height: 1px; background: #e0002a; }
+
+/* A fixed toolbar right below the status bar (like an app's nav bar). */
+.toolbar { position: fixed; z-index: 40; top: 0; left: 0; right: 0; padding: var(--safe-top) 12px 0 50px;
+  /* White below the status bar, transparent under it, so scrolled content still passes under the status bar. */
+  background: linear-gradient(to bottom, transparent var(--safe-top), #fff var(--safe-top)); }
+.toolbar-row { height: 56px; display: flex; align-items: center; gap: 10px; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; flex: none;
+  background: repeating-radial-gradient(circle, #000 0 1px, #fff 1px 3px); border: 1.5px solid #000; }
+.btn { width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid #000; display: grid; place-items: center; background: #fff; font: 700 20px/1 -apple-system, sans-serif; }
+.toolbar .label { flex: 1; font-size: 11px; font-weight: 600; letter-spacing: 0.01em; }
+.toolbar .checker { height: 8px; margin-top: 2px; }
+
+/* The top of the normal (scrolling) content, starting right under the toolbar. */
+main { padding: calc(var(--safe-top) + 70px) 12px 40px 50px; }
+.block { border: 1px solid #000; margin-bottom: 12px; }
+.block h2 { margin: 0; padding: 6px 8px; font-size: 13px; background: #000; color: #fff; }
+.block .checker { height: 24px; }
+.block .lines { height: 24px; }
+.block p { margin: 0; padding: 6px 8px; font-size: 12px; }
+.mode { font: 12px/1.4 ui-monospace, Menlo, monospace; padding: 8px; background: #fff7d6; border: 1px solid #c9a400; margin-bottom: 12px; }
+.how { font-size: 13px; }
+.how li { margin: 4px 0; }
+
+/* Variant (translucent-solid/): a plain, opaque background-color from the top of the screen, covering the status bar
+   area. WebKit hides its top scroll edge effect in Safari when it finds a fixed, full-width element like this at the
+   top edge; this checks whether the same holds in a black-translucent Home Screen app. */
+.toolbar.solid { background: #fff; }
+.how p { margin: 6px 0 0; }
