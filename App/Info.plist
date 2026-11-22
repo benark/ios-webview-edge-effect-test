@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>CFBundleIdentifier</key>
+  <string>test.webview.edgeeffect</string>
+  <key>CFBundleExecutable</key>
+  <string>EdgeEffectTest</string>
+  <key>CFBundleName</key>
+  <string>EdgeEffectTest</string>
+  <key>CFBundleDisplayName</key>
+  <string>Edge Test</string>
+  <key>CFBundlePackageType</key>
+  <string>APPL</string>
+  <key>CFBundleInfoDictionaryVersion</key>
+  <string>6.0</string>
+  <key>CFBundleShortVersionString</key>
+  <string>1.0</string>
+  <key>CFBundleVersion</key>
+  <string>1</string>
+  <key>CFBundleSupportedPlatforms</key>
+  <array>
+    <string>iPhoneSimulator</string>
+  </array>
+  <key>LSRequiresIPhoneOS</key>
+  <true/>
+  <key>MinimumOSVersion</key>
+  <string>26.0</string>
+  <key>UIDeviceFamily</key>
+  <array>
+    <integer>1</integer>
+  </array>
+  <!-- An empty launch screen entry makes iOS run the app at the device's full screen size. -->
+  <key>UILaunchScreen</key>
+  <dict/>
+  <key>UISupportedInterfaceOrientations</key>
+  <array>
+    <string>UIInterfaceOrientationPortrait</string>
+  </array>
+  <!-- The test loads the pages over plain HTTP from a server on the Mac that runs the simulator. -->
+  <key>NSAppTransportSecurity</key>
+  <dict>
+    <key>NSAllowsLocalNetworking</key>
+    <true/>
+    <key>NSAllowsArbitraryLoadsInWebContent</key>
+    <true/>
+  </dict>
+  <key>UIApplicationSceneManifest</key>
+  <dict>
+    <key>UIApplicationSupportsMultipleScenes</key>
+    <false/>
+  </dict>
+</dict>
+</plist>

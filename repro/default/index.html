@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Fade Ctrl">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="../repro.css">
+  <title>Status bar fade repro: default</title>
+</head>
+<body>
+  <!-- Ruler measured from the top of the screen (pt). -->
+  <div class="ruler" aria-hidden="true">
+    <span style="top:20px">20</span><span style="top:40px">40</span><span style="top:60px">60</span><span style="top:80px">80</span>
+    <span style="top:100px">100</span><span style="top:120px">120</span><span style="top:140px">140</span><span style="top:160px">160</span>
+    <span style="top:180px">180</span><span style="top:200px">200</span>
+  </div>
+
+  <!-- position: fixed toolbar directly below the status bar. -->
+  <header class="toolbar">
+    <div class="toolbar-row">
+      <div class="avatar" title="fixed: concentric rings"></div>
+      <div class="label">FIXED TOOLBAR · Sharp text 0123456789 ABCDEFGHIJ</div>
+      <div class="btn">+</div><div class="btn">&#9711;</div>
+    </div>
+    <div class="checker" title="fixed: checkerboard"></div>
+  </header>
+
+  <main>
+    <div class="block">
+      <h2>Top of the page content (not fixed)</h2>
+      <div class="checker"></div>
+      <div class="lines"></div>
+      <p>Small text should be crisp: The quick brown fox jumps over the lazy dog 0123456789.</p>
+    </div>
+
+    <div class="mode" id="mode">…</div>
+
+    <div class="how">
+      <strong>This page uses default: the control (expect no blur).</strong>
+      <ol>
+        <li>In Safari, Share → Add to Home Screen, then open it from the Home Screen.</li>
+        <li>Also add <a href="../translucent/">the black-translucent (bug) version</a> and <a href="../translucent-solid/">the black-translucent version with an opaque toolbar</a>, and compare them side by side.</li>
+        <li>Look at the top of the fixed toolbar against the ruler: with <code>black-translucent</code>, iOS draws a
+          progressive blur and fade from the top of the screen to about 35 pt below the status bar, so the upper part
+          of the toolbar is soft. With <code>default</code>, everything is sharp. In Safari itself (not installed), the
+          fixed toolbar stays sharp in both.</li>
+        <li>Scroll: content passing under the status bar is blurred too (expected), but the fixed toolbar stays blurred
+          even when nothing is scrolled.</li>
+      </ol>
+    </div>
+
+    <div class="block"><h2>More content</h2><div class="checker"></div><div class="lines"></div><p>Scroll this under the status bar.</p></div>
+    <div class="block"><h2>More content</h2><div class="checker"></div><div class="lines"></div><p>Scroll this under the status bar.</p></div>
+    <div class="block"><h2>More content</h2><div class="checker"></div><div class="lines"></div><p>Scroll this under the status bar.</p></div>
+  </main>
+
+  <script src="../repro.js"></script>
+</body>
+</html>

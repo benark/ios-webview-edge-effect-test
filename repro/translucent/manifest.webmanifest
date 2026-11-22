@@ -1,0 +1,9 @@
+{
+  "name": "Status bar fade repro (black-translucent)",
+  "short_name": "Fade Bug",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff"
+}
