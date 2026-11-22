@@ -17,7 +17,7 @@ The full write-up, with measurements, analysis and suggested fixes, is in **[doc
 | Path | Contents |
 |---|---|
 | [`docs/report.md`](docs/report.md) | The report for Apple (Feedback Assistant) and WebKit |
-| [`repro/`](repro) | The three reproduction pages: static HTML, one stylesheet, one script |
+| [`repro/`](repro) | The three reproduction pages (static HTML, one stylesheet, one script), published with GitHub Pages |
 | [`docs/device/`](docs/device) | Screenshots from a real iPhone 18 Pro Max on iOS 27.2 |
 | [`App/`](App) | A test app that applies each edge effect style to a web view |
 | [`scripts/`](scripts) | Build and run the test app; measure and compare screenshots |
@@ -25,13 +25,17 @@ The full write-up, with measurements, analysis and suggested fixes, is in **[doc
 
 ## Reproduction pages
 
-The pages are served live, so they can be added to the Home Screen from Safari (Share → Add to Home Screen):
+The pages are published at https://benark.github.io/ios-webview-edge-effect-test/, so they can be added to the Home
+Screen from Safari (Share → Add to Home Screen):
 
-- Bug: https://ado-mobile.benark.com/repro/translucent/ (`black-translucent`; the toolbar is transparent over the
-  status bar)
-- Opaque toolbar: https://ado-mobile.benark.com/repro/translucent-solid/ (`black-translucent`; the toolbar has a plain
-  white `background-color` from the top of the screen)
-- Control: https://ado-mobile.benark.com/repro/default/ (`default`)
+- Bug: https://benark.github.io/ios-webview-edge-effect-test/translucent/ (`black-translucent`; the toolbar is
+  transparent over the status bar)
+- Opaque toolbar: https://benark.github.io/ios-webview-edge-effect-test/translucent-solid/ (`black-translucent`; the
+  toolbar has a plain white `background-color` from the top of the screen)
+- Control: https://benark.github.io/ios-webview-edge-effect-test/default/ (`default`)
+
+The **Publish reproduction pages** workflow deploys `repro/` whenever it changes on `main`. It needs Settings → Pages →
+Source set to "GitHub Actions".
 
 Each has a fixed toolbar of fine test patterns (rings, a 2 px checkerboard, small text), a red ruler on the left edge
 marked in points from the top of the screen, and a yellow box that reports the environment. Find where the ruler's
@@ -104,6 +108,9 @@ Actions tab → **Edge effect test** → **Run workflow**. Each run:
   [`results`](../../tree/results) branch, and
 - attaches the same files to the run as the `screenshots` artifact.
 
+The test serves `repro/` from the checkout on `localhost`, so it tests the pages in the commit it runs on. To test a
+published copy, give the workflow a `base_url`, or set `BASE_URL` for `scripts/run.sh`.
+
 To run it on a Mac: `scripts/build.sh && scripts/run.sh` (Xcode 27 with an iOS 27 simulator).
 
 ## Checking the numbers
@@ -120,4 +127,3 @@ Both scripts need Pillow and NumPy.
 - The edge effect test runs in a simulator, not on a device, and uses a plain `WKWebView`, not Apple's Home Screen
   shell. The soft case matching the real iPhone is the evidence that the simulator draws the effect faithfully.
 - That Home Screen web apps use the soft style is inferred from that match. The shell's code is not public.
-- The test loads the pages from the live site, so a run needs network access.

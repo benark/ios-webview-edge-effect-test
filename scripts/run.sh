@@ -1,11 +1,11 @@
 #!/bin/bash
 # Boots a simulator, runs the test app once per case, and saves a screenshot and a report for each in out/.
-#   BASE_URL     folder that holds the test pages (default: the live reproduction pages)
+#   BASE_URL     folder that holds the test pages (default: repro/ from this checkout, served on localhost)
 #   DEVICE_NAME  simulator device type (default: iPhone 18 Pro Max)
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-BASE_URL="${BASE_URL:-https://ado-mobile.benark.com/repro/}"
+BASE_URL="${BASE_URL:-}"
 DEVICE_NAME="${DEVICE_NAME:-iPhone 18 Pro Max}"
 BUNDLE=test.webview.edgeeffect
 APP=build/EdgeEffectTest.app
@@ -21,6 +21,21 @@ CASES=(
   "hard-solid-top|translucent-solid/|hard|0"
   "hidden-top|translucent/|hidden|0"
 )
+
+if [ -z "$BASE_URL" ]; then
+  # Serve the pages from this checkout. The simulator shares the Mac's network, so localhost reaches this server.
+  PORT=8765
+  python3 -m http.server "$PORT" --directory repro >/dev/null 2>&1 &
+  SERVER_PID=$!
+  trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+  BASE_URL="http://localhost:$PORT/"
+  for _ in $(seq 1 20); do
+    curl -fsS -o /dev/null "${BASE_URL}translucent/" 2>/dev/null && break
+    sleep 0.5
+  done
+  curl -fsS -o /dev/null "${BASE_URL}translucent/" || { echo "the local page server did not start"; exit 1; }
+fi
+echo "Pages: $BASE_URL"
 
 # Newest iOS runtime that has the requested device; otherwise the newest with any iPhone.
 UDID=$(xcrun simctl list devices available -j | DEVICE_NAME="$DEVICE_NAME" python3 -c '

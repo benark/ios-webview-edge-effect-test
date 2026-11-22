@@ -94,6 +94,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate {
         let effect = webView.scrollView.topEdgeEffect
         return [
             "style requested": style,
+            "url": webView.url?.absoluteString ?? "",
             "topEdgeEffect": String(describing: effect),
             "topEdgeEffect.isHidden": String(effect.isHidden),
             "iOS": UIDevice.current.systemVersion,

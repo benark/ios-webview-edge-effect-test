@@ -22,11 +22,11 @@ apart from page content. The problem is only the part that extends below it.
 
 ## Live reproduction
 
-- Bug: https://ado-mobile.benark.com/repro/translucent/ (`black-translucent`; the toolbar is transparent over the
-  status bar)
-- Control: https://ado-mobile.benark.com/repro/default/ (`default`)
-- Opaque toolbar: https://ado-mobile.benark.com/repro/translucent-solid/ (`black-translucent`; the toolbar has a
-  plain white `background-color` from the top of the screen)
+- Bug: https://benark.github.io/ios-webview-edge-effect-test/translucent/ (`black-translucent`; the toolbar is
+  transparent over the status bar)
+- Control: https://benark.github.io/ios-webview-edge-effect-test/default/ (`default`)
+- Opaque toolbar: https://benark.github.io/ios-webview-edge-effect-test/translucent-solid/ (`black-translucent`; the
+  toolbar has a plain white `background-color` from the top of the screen)
 
 Each page is a single static HTML file plus a small manifest, stylesheet and script (in [`repro/`](../repro) in this
 repository), with a fixed toolbar of high-frequency test patterns (concentric rings, a 2 px checkerboard, 1 px lines, small text),
@@ -229,5 +229,7 @@ behavior from Apple.
 
 - On "Fade Bug" the inset read 0 pt when the page's first script ran and 62 pt afterward, so iOS can apply it after
   the page starts. On "Fade Solid" the first read was already 62 pt.
+- The device screenshots were taken with the same page files served from another host, before they were published
+  with GitHub Pages.
 - Screenshots to attach, in [`docs/device/`](device): `fade-bug.png`, `fade-solid.png` and `fade-ctrl.png` (opened
   from the Home Screen, unscrolled) and `fade-bug-scrolled.png`.

@@ -37,6 +37,14 @@
   <array>
     <string>UIInterfaceOrientationPortrait</string>
   </array>
+  <!-- The test loads the pages over plain HTTP from a server on the Mac that runs the simulator. -->
+  <key>NSAppTransportSecurity</key>
+  <dict>
+    <key>NSAllowsLocalNetworking</key>
+    <true/>
+    <key>NSAllowsArbitraryLoadsInWebContent</key>
+    <true/>
+  </dict>
   <key>UIApplicationSceneManifest</key>
   <dict>
     <key>UIApplicationSupportsMultipleScenes</key>

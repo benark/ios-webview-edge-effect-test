@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iOS top edge effect: reproduction pages</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { margin: 0 auto; max-width: 640px; padding: 24px 16px; font: 16px/1.45 -apple-system, system-ui, sans-serif; }
+    h1 { font-size: 22px; line-height: 1.2; }
+    li { margin: 10px 0; }
+    code { font: 14px ui-monospace, Menlo, monospace; }
+  </style>
+</head>
+<body>
+  <h1>iOS top edge effect: reproduction pages</h1>
+  <p>On an iPhone running iOS 27, open a page in Safari, choose Share → Add to Home Screen, then open it from the
+    Home Screen and look at the fixed toolbar against the red ruler.</p>
+  <ul>
+    <li><a href="translucent/">Bug</a>: <code>black-translucent</code>; the toolbar is transparent over the status
+      bar.</li>
+    <li><a href="translucent-solid/">Opaque toolbar</a>: <code>black-translucent</code>; the toolbar has a plain white
+      background from the top of the screen.</li>
+    <li><a href="default/">Control</a>: <code>default</code>.</li>
+  </ul>
+  <p>The report, the source of these pages and the test results are at
+    <a href="https://github.com/benark/ios-webview-edge-effect-test">github.com/benark/ios-webview-edge-effect-test</a>.</p>
+</body>
+</html>

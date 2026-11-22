@@ -6,8 +6,8 @@ on:
   workflow_dispatch:
     inputs:
       base_url:
-        description: Folder that holds the test pages
-        default: https://ado-mobile.benark.com/repro/
+        description: Folder URL that holds the test pages (empty serves repro/ from this checkout)
+        default: ''
       device:
         description: Simulator device
         default: iPhone 18 Pro Max
@@ -41,7 +41,7 @@ jobs:
 
       - name: Run the cases
         env:
-          BASE_URL: ${{ inputs.base_url || 'https://ado-mobile.benark.com/repro/' }}
+          BASE_URL: ${{ inputs.base_url }}
           DEVICE_NAME: ${{ inputs.device || 'iPhone 18 Pro Max' }}
         run: scripts/run.sh
 
